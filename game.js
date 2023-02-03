@@ -203,6 +203,7 @@ function check() {
 
 function load() {
     console.log('Started the game');
+    replacetitle(`<h1>Chemistry Revision</h1><h3>Fill in the blanks</h3>`);
     currentAnswer = generateQuestion();
     replaceControlPannel(`<button onclick="check();"><h4>Submit</h4></button>`);
 };
