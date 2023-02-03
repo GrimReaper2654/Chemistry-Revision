@@ -62,36 +62,33 @@ async function bruh() {
 }
 
 function drawBrain() {
-    if (document.getElementById("brain")) { // only try to add brain if the space for the brain exists
-        console.log(brainSize);
-        if (brainSize < -500) {
-            window.location.replace("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
-        }
-        if (brainSize < -200) {
-            replacebrain(`<img src="brain Stage-2.png">`);
-        } else if (brainSize < -75) {
-            replacebrain(`<img src="brain Stage-1.png">`);
-        } else if (brainSize < -20) {
-            replacebrain(`<img src="brain Stage0.png">`);
-        } else if (brainSize < 15) {
-            replacebrain(`<img src="brain Stage1.png">`);
-        } else if (brainSize < 50) {
-            replacebrain(`<img src="brain Stage2.png">`);
-        } else if (brainSize < 100) {
-            replacebrain(`<img src="brain Stage3.png">`);
-        } else if (brainSize < 175) {
-            replacebrain(`<img src="brain Stage4.png">`);
-        } else if (brainSize < 250) {
-            replacebrain(`<img src="brain Stage5.png">`);
-        } else if (brainSize < 350) {
-            replacebrain(`<img src="brain Stage6.png">`);
-        } else if (brainSize < 500) {
-            replacebrain(`<img src="brain Stage7.png">`);
-        } else if (brainSize < 750) {
-            replacebrain(`<img src="brain Stage8.png">`);
-        } else if (brainSize > 750) {
-            replacebrain(`<img src="brain Stage9.png">`);
-        }
+    if (brainSize < -500) {
+        window.location.replace("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+    }
+    if (brainSize < -200) {
+        replacebrain(`<img src="brain Stage-2.png">`);
+    } else if (brainSize < -75) {
+        replacebrain(`<img src="brain Stage-1.png">`);
+    } else if (brainSize < -20) {
+        replacebrain(`<img src="brain Stage0.png">`);
+    } else if (brainSize < 15) {
+        replacebrain(`<img src="brain Stage1.png">`);
+    } else if (brainSize < 50) {
+        replacebrain(`<img src="brain Stage2.png">`);
+    } else if (brainSize < 100) {
+        replacebrain(`<img src="brain Stage3.png">`);
+    } else if (brainSize < 175) {
+        replacebrain(`<img src="brain Stage4.png">`);
+    } else if (brainSize < 250) {
+        replacebrain(`<img src="brain Stage5.png">`);
+    } else if (brainSize < 350) {
+        replacebrain(`<img src="brain Stage6.png">`);
+    } else if (brainSize < 500) {
+        replacebrain(`<img src="brain Stage7.png">`);
+    } else if (brainSize < 750) {
+        replacebrain(`<img src="brain Stage8.png">`);
+    } else if (brainSize > 750) {
+        replacebrain(`<img src="brain Stage9.png">`);
     }
 }
 
@@ -219,8 +216,14 @@ function sleep(ms) {
 async function main() {
     load();
     while (1) {
-        await sleep(500);
-        drawBrain();
+        await sleep(1000/60);
+        if (document.getElementById("main")) { // the page does exist
+            if(reloadQuestion) {
+                currentAnswer = generateQuestion();
+                reloadQuestion = false;
+            }
+            drawBrain();
+        }
     }
 };
 
