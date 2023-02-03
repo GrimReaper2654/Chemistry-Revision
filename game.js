@@ -43,7 +43,9 @@ function replacemain(text) {
 };
 
 function replacebrain(text) {
-    document.getElementById("brain").innerHTML = text;
+    if (document.getElementById("brain").innerHTML != text) {
+        document.getElementById("brain").innerHTML = text;
+    }
 };
 
 function replaceControlPannel(text) {
