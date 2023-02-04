@@ -63,9 +63,9 @@ function replacemain(text) {
 };
 
 function replacebrain(text) {
-    if (document.getElementById("brain").innerHTML != text) {
-        document.getElementById("brain").innerHTML = text;
-    }
+    var c = document.getElementById("bruh");
+    var ctx = c.getContext("2d");
+    ctx.drawImage(text, 0, 0);
 };
 
 function replaceControlPannel(text) {
