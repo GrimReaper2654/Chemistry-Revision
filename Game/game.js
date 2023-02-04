@@ -88,29 +88,29 @@ function drawBrain() {
         window.location.replace("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
     }
     if (brainSize < -200) {
-        replacebrain(`<img src="brain Stage-2.png">`);
+        replacebrain(docuemnt.getElementById("-2"));
     } else if (brainSize < -75) {
-        replacebrain(`<img src="brain Stage-1.png">`);
+        replacebrain(docuemnt.getElementById("-1"));
     } else if (brainSize < -20) {
-        replacebrain(`<img src="brain Stage0.png">`);
+        replacebrain(docuemnt.getElementById("0"));
     } else if (brainSize < 15) {
-        replacebrain(`<img src="brain Stage1.png">`);
+        replacebrain(docuemnt.getElementById("1"));
     } else if (brainSize < 50) {
-        replacebrain(`<img src="brain Stage2.png">`);
+        replacebrain(docuemnt.getElementById("2"));
     } else if (brainSize < 100) {
-        replacebrain(`<img src="brain Stage3.png">`);
+        replacebrain(docuemnt.getElementById("3"));
     } else if (brainSize < 175) {
-        replacebrain(`<img src="brain Stage4.png">`);
+        replacebrain(docuemnt.getElementById("4"));
     } else if (brainSize < 250) {
-        replacebrain(`<img src="brain Stage5.png">`);
+        replacebrain(docuemnt.getElementById("5"));
     } else if (brainSize < 350) {
-        replacebrain(`<img src="brain Stage6.png">`);
+        replacebrain(docuemnt.getElementById("6"));
     } else if (brainSize < 500) {
-        replacebrain(`<img src="brain Stage7.png">`);
+        replacebrain(docuemnt.getElementById("7"));
     } else if (brainSize < 750) {
-        replacebrain(`<img src="brain Stage8.png">`);
+        replacebrain(docuemnt.getElementById("8"));
     } else if (brainSize > 750) {
-        replacebrain(`<img src="brain Stage9.png">`);
+        replacebrain(docuemnt.getElementById("9"));
     }
 }
 
