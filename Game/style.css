@@ -8,3 +8,7 @@ label {
 #data {
   display: none;
 }
+
+#brain {
+  display: block;
+}
