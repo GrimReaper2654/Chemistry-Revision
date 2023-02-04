@@ -88,29 +88,29 @@ function drawBrain() {
         window.location.replace("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
     }
     if (brainSize < -200) {
-        replacebrain(docuemnt.getElementById("-2"));
+        replacebrain(document.getElementById("-2"));
     } else if (brainSize < -75) {
-        replacebrain(docuemnt.getElementById("-1"));
+        replacebrain(document.getElementById("-1"));
     } else if (brainSize < -20) {
-        replacebrain(docuemnt.getElementById("0"));
+        replacebrain(document.getElementById("0"));
     } else if (brainSize < 15) {
-        replacebrain(docuemnt.getElementById("1"));
+        replacebrain(document.getElementById("1"));
     } else if (brainSize < 50) {
-        replacebrain(docuemnt.getElementById("2"));
+        replacebrain(document.getElementById("2"));
     } else if (brainSize < 100) {
-        replacebrain(docuemnt.getElementById("3"));
+        replacebrain(document.getElementById("3"));
     } else if (brainSize < 175) {
-        replacebrain(docuemnt.getElementById("4"));
+        replacebrain(document.getElementById("4"));
     } else if (brainSize < 250) {
-        replacebrain(docuemnt.getElementById("5"));
+        replacebrain(document.getElementById("5"));
     } else if (brainSize < 350) {
-        replacebrain(docuemnt.getElementById("6"));
+        replacebrain(document.getElementById("6"));
     } else if (brainSize < 500) {
-        replacebrain(docuemnt.getElementById("7"));
+        replacebrain(document.getElementById("7"));
     } else if (brainSize < 750) {
-        replacebrain(docuemnt.getElementById("8"));
+        replacebrain(document.getElementById("8"));
     } else if (brainSize > 750) {
-        replacebrain(docuemnt.getElementById("9"));
+        replacebrain(document.getElementById("9"));
     }
 }
 
