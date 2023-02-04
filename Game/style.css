@@ -4,3 +4,7 @@ label {
     font-size: 20px;
     white-space: pre;
 }
+
+.data {
+  display: none;
+}
