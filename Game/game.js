@@ -5,44 +5,39 @@
 //----------------------------------------------------------------------
 //
 // Data comes from the Lucarelli textbook
-/*
-const ptable = [
-    {name: ['Hydrogen','hydrogen'], symbol: ['H'], atomic: ['1'], mass: ['1.008','IDK'], valence: ['1+','1','+1','+','IDK']},
-    {name: ['Helium','helium'], symbol: ['He'], atomic: ['2'], mass: ['4.003','IDK'], valence: ['0','IDK']},
-    {name: ['Lithium','lithium'], symbol: ['Li'], atomic: ['3'], mass: ['6.968','IDK'], valence: ['1+','1','+1','+','IDK']},
-    {name: ['Beryllium','beryllium'], symbol: ['Be'], atomic: ['4'], mass: ['9.012','IDK'], valence: ['2+','2','+2','IDK']},
-    {name: ['Boron','boron'], symbol: ['B'], atomic: ['5'], mass: ['10.82','IDK'], valence: ['3+','3','+3','IDK']},
-    {name: ['Carbon','carbon'], symbol: ['C'], atomic: ['6'], mass: ['12.01','IDK'], valence: ['4+','4','+4','4-','-4','IDK']},
-    {name: ['Nitrogen','nitrogen'], symbol: ['N'], atomic: ['7'], mass: ['14.01','IDK'], valence: ['3-','3','-3','IDK']},
-    {name: ['Oxygen','oxygen'], symbol: ['O'], atomic: ['8'], mass: ['16','16.00','16.0','IDK'], valence: ['2-','2','-2','IDK']},
-    {name: ['Fluorine','fluorine'], symbol: ['F'], atomic: ['9'], mass: ['19','19.00','19.0','IDK'], valence: ['1-','1','-1','-','IDK']},
-    {name: ['Neon','Neon'], symbol: ['Ne'], atomic: ['10'], mass: ['20.18','IDK'], valence: ['0','IDK']},
-    {name: ['Sodium','sodium'], symbol: ['Na'], atomic: ['11'], mass: ['22.99','IDK'], valence: ['1','1+','+1','+','IDK']},
-    {name: ['Magnesium','magnesium'], symbol: ['Mg'], atomic: ['12'], mass: ['24.31','IDK'], valence: ['2+','2','+2','IDK']},
-    {name: ['Aluminium','aluminium'], symbol: ['Al'], atomic: ['13'], mass: ['26.98','IDK'], valence: ['3+','3','+3','IDK']},
-    {name: ['Silicon','silicon'], symbol: ['Si'], atomic: ['14'], mass: ['28.09','IDK'], valence: ['4+','4','+4','IDK']},
-    {name: ['Phosphorus','phosphorus'], symbol: ['P'], atomic: ['15'], mass: ['30.97','IDK'], valence: ['3-','3','-3','IDK']},
-    {name: ['Sulphur','sulphur'], symbol: ['S'], atomic: ['16'], mass: ['32.07','IDK'], valence: ['2-','2','-2','IDK']},
-    {name: ['Chlorine','chlorine'], symbol: ['Cl'], atomic: ['17'], mass: ['35.45','IDK'], valence: ['1-','1','-1','-','IDK']},
-    {name: ['Argon','argon'], symbol: ['Ar'], atomic: ['18'], mass: ['39.95','IDK'], valence: ['0','IDK']},
-    {name: ['Potassium','potassium'], symbol: ['K'], atomic: ['19'], mass: ['39.10','39.1','IDK'], valence: ['1','1+','+1','+','IDK']},
-    {name: ['Calcium','calcium'], symbol: ['Ca'], atomic: ['20'], mass: ['40.08','IDK'], valence: ['2+','2','+2','IDK']},
-    {name: ['Scandium','scandium'], symbol: ['Sc'], atomic: ['21'], mass: ['44.96','IDK'], valence: ['3+','3','+3','IDK']},
-    {name: ['Titanium','titanium'], symbol: ['Ti'], atomic: ['22'], mass: ['47.87','IDK'], valence: ['4+','4','+4','IDK']},
-    {name: ['Vanadium','vanadium'], symbol: ['V'], atomic: ['23'], mass: ['50.94','IDK'], valence: ['5','5+','+5','4','4+','+4','IDK']},
-    {name: ['Chromium','chromium'], symbol: ['Cr'], atomic: ['24'], mass: ['52.00','52','52.0','IDK'], valence: ['2+','2','+2','IDK']},
-    {name: ['Manganese','manganese'], symbol: ['Mn'], atomic: ['25'], mass: ['54.94','IDK'], valence: ['7+','7','+7','4+','4','+4','2+','2','+2','IDK']},
-    {name: ['Iron','iron'], symbol: ['Fe'], atomic: ['26'], mass: ['55.85','IDK'], valence: ['2+','2','+2','3+','3','+3','IDK']},
-    {name: ['Cobalt','cobalt'], symbol: ['Co'], atomic: ['27'], mass: ['58.93','IDK'], valence: ['3+','3','+3','2+','2','+2','IDK']},
-    {name: ['Nickel','nickel'], symbol: ['Ni'], atomic: ['28'], mass: ['58.69','IDK'], valence: ['2+','2','+2','IDK']},
-    {name: ['Copper','copper'], symbol: ['Cu'], atomic: ['29'], mass: ['63.55','IDK'], valence: ['2+','2','+2','1','1+','+1','+','IDK']},
-    {name: ['Zinc','zinc'], symbol: ['Zn'], atomic: ['30'], mass: ['65.38','IDK'], valence: ['2+','2','+2','IDK']},
-];
-*/
+
 const ptable = [
     [{question: 'Name:          ', answer: ['Hydrogen','hydrogen'], given: true},{question: 'Symbol:        ', answer: ['H'], given: true},{question: 'Atomic Number: ', answer: ['1'], given: true},{question: 'Mass number:   ', answer: ['1.008'], given: false},{question: 'Valence:       ', answer: ['1+','1','+1','+'], given: false}],
     [{question: 'Name:          ', answer: ['Helium','helium'], given: true},{question: 'Symbol:        ', answer: ['He'], given: true},{question: 'Atomic Number: ', answer: ['2'], given: true},{question: 'Mass number:   ', answer: ['4.003'], given: false},{question: 'Valence:       ', answer: ['0'], given: false}],
     [{question: 'Name:          ', answer: ['Lithium','lithium'], given: true},{question: 'Symbol:        ', answer: ['Li'], given: true},{question: 'Atomic Number: ', answer: ['3'], given: true},{question: 'Mass number:   ', answer: ['6.968'], given: false},{question: 'Valence:       ', answer: ['1+','1','+1','+'], given: false}],
+    [{question: 'Name:          ', answer: ['Beryllium','beryllium'], given: true},{question: 'Symbol:        ', answer: ['Be'], given: true},{question: 'Atomic Number: ', answer: ['4'], given: true},{question: 'Mass number:   ', answer: ['9.012'], given: false},{question: 'Valence:       ', answer: ['2+','2','+2'], given: false}],
+    [{question: 'Name:          ', answer: ['Boron','boron'], given: true},{question: 'Symbol:        ', answer: ['B'], given: true},{question: 'Atomic Number: ', answer: ['5'], given: true},{question: 'Mass number:   ', answer: ['10.82'], given: false},{question: 'Valence:       ', answer: ['3+','3','+3'], given: false}],
+    [{question: 'Name:          ', answer: ['Carbon','carbon'], given: true},{question: 'Symbol:        ', answer: ['C'], given: true},{question: 'Atomic Number: ', answer: ['6'], given: true},{question: 'Mass number:   ', answer: ['12.01'], given: false},{question: 'Valence:       ', answer: ['4+','4','+4','4-','-4'], given: false}],
+    [{question: 'Name:          ', answer: ['Nitrogen','nitrogen'], given: true},{question: 'Symbol:        ', answer: ['N'], given: true},{question: 'Atomic Number: ', answer: ['7'], given: true},{question: 'Mass number:   ', answer: ['14.01'], given: false},{question: 'Valence:       ', answer: ['3-','3','-3'], given: false}],
+    [{question: 'Name:          ', answer: ['Oxygen','oxygen'], given: true},{question: 'Symbol:        ', answer: ['O'], given: true},{question: 'Atomic Number: ', answer: ['8'], given: true},{question: 'Mass number:   ', answer: ['16','16.00','16.0'], given: false},{question: 'Valence:       ', answer: ['2-','2','-2'], given: false}],
+    [{question: 'Name:          ', answer: ['Fluorine','fluorine'], given: true},{question: 'Symbol:        ', answer: ['F'], given: true},{question: 'Atomic Number: ', answer: ['9'], given: true},{question: 'Mass number:   ', answer: ['19','19.00','19.0'], given: false},{question: 'Valence:       ', answer: ['1-','1','-1','-'], given: false}],
+    [{question: 'Name:          ', answer: ['Neon','neon'], given: true},{question: 'Symbol:        ', answer: ['Ne'], given: true},{question: 'Atomic Number: ', answer: ['10'], given: true},{question: 'Mass number:   ', answer: ['20.18'], given: false},{question: 'Valence:       ', answer: ['0'], given: false}],
+    [{question: 'Name:          ', answer: ['Sodium','sodium'], given: true},{question: 'Symbol:        ', answer: ['Na'], given: true},{question: 'Atomic Number: ', answer: ['11'], given: true},{question: 'Mass number:   ', answer: ['22.99'], given: false},{question: 'Valence:       ', answer: ['1+','1','+1','+'], given: false}],
+    [{question: 'Name:          ', answer: ['Magnesium','megnesium'], given: true},{question: 'Symbol:        ', answer: ['Mg'], given: true},{question: 'Atomic Number: ', answer: ['12'], given: true},{question: 'Mass number:   ', answer: ['24.31'], given: false},{question: 'Valence:       ', answer: ['2+','2','+2'], given: false}],
+    [{question: 'Name:          ', answer: ['Aluminium','aluminium'], given: true},{question: 'Symbol:        ', answer: ['Al'], given: true},{question: 'Atomic Number: ', answer: ['13'], given: true},{question: 'Mass number:   ', answer: ['26.98'], given: false},{question: 'Valence:       ', answer: ['3+','3','+3'], given: false}],
+    [{question: 'Name:          ', answer: ['Silicon','silicon'], given: true},{question: 'Symbol:        ', answer: ['Si'], given: true},{question: 'Atomic Number: ', answer: ['14'], given: true},{question: 'Mass number:   ', answer: ['28.09'], given: false},{question: 'Valence:       ', answer: ['4+','4','+4'], given: false}],
+    [{question: 'Name:          ', answer: ['Phosphorus','phosphorus'], given: true},{question: 'Symbol:        ', answer: ['P'], given: true},{question: 'Atomic Number: ', answer: ['15'], given: true},{question: 'Mass number:   ', answer: ['30.97'], given: false},{question: 'Valence:       ', answer: ['3-','3','-3'], given: false}],
+    [{question: 'Name:          ', answer: ['Sulphur','sulphur'], given: true},{question: 'Symbol:        ', answer: ['S'], given: true},{question: 'Atomic Number: ', answer: ['16'], given: true},{question: 'Mass number:   ', answer: ['32.07'], given: false},{question: 'Valence:       ', answer: ['2-','2','-2'], given: false}],
+    [{question: 'Name:          ', answer: ['Chlorine','chlorine'], given: true},{question: 'Symbol:        ', answer: ['Cl'], given: true},{question: 'Atomic Number: ', answer: ['17'], given: true},{question: 'Mass number:   ', answer: ['35.45'], given: false},{question: 'Valence:       ', answer: ['1-','1','-1','-'], given: false}],
+    [{question: 'Name:          ', answer: ['Argon','argon'], given: true},{question: 'Symbol:        ', answer: ['Ar'], given: true},{question: 'Atomic Number: ', answer: ['18'], given: true},{question: 'Mass number:   ', answer: ['39.95'], given: false},{question: 'Valence:       ', answer: ['0'], given: false}],
+    [{question: 'Name:          ', answer: ['Potassium','potassium'], given: true},{question: 'Symbol:        ', answer: ['K'], given: true},{question: 'Atomic Number: ', answer: ['19'], given: true},{question: 'Mass number:   ', answer: ['39.10','39.1'], given: false},{question: 'Valence:       ', answer: ['1+','1','+1','+'], given: false}],
+    [{question: 'Name:          ', answer: ['Calcium','calcium'], given: true},{question: 'Symbol:        ', answer: ['Ca'], given: true},{question: 'Atomic Number: ', answer: ['20'], given: true},{question: 'Mass number:   ', answer: ['40.08'], given: false},{question: 'Valence:       ', answer: ['2+','2','+2'], given: false}],
+    [{question: 'Name:          ', answer: ['Scandium','scandium'], given: true},{question: 'Symbol:        ', answer: ['Sc'], given: true},{question: 'Atomic Number: ', answer: ['21'], given: true},{question: 'Mass number:   ', answer: ['44.96'], given: false},{question: 'Valence:       ', answer: ['3+','3','+3'], given: false}],
+    [{question: 'Name:          ', answer: ['Titanium','titanium'], given: true},{question: 'Symbol:        ', answer: ['Ti'], given: true},{question: 'Atomic Number: ', answer: ['22'], given: true},{question: 'Mass number:   ', answer: ['47.87'], given: false},{question: 'Valence:       ', answer: ['4+','4','+4'], given: false}],
+    [{question: 'Name:          ', answer: ['Vanadium','vanadium'], given: true},{question: 'Symbol:        ', answer: ['V'], given: true},{question: 'Atomic Number: ', answer: ['23'], given: true},{question: 'Mass number:   ', answer: ['50.94'], given: false},{question: 'Valence:       ', answer: ['4+','4','+4','5+','5','+5'], given: false}],
+    [{question: 'Name:          ', answer: ['Chromium','chromium'], given: true},{question: 'Symbol:        ', answer: ['Cr'], given: true},{question: 'Atomic Number: ', answer: ['24'], given: true},{question: 'Mass number:   ', answer: ['52','52.0','52.00'], given: false},{question: 'Valence:       ', answer: ['2+','2','+2'], given: false}],
+    [{question: 'Name:          ', answer: ['Manganese','manganese'], given: true},{question: 'Symbol:        ', answer: ['Mn'], given: true},{question: 'Atomic Number: ', answer: ['25'], given: true},{question: 'Mass number:   ', answer: ['54.94'], given: false},{question: 'Valence:       ', answer: ['2+','2','+2','7+','7','+7','4+','4','+4'], given: false}],
+    [{question: 'Name:          ', answer: ['Iron','iron'], given: true},{question: 'Symbol:        ', answer: ['Fe'], given: true},{question: 'Atomic Number: ', answer: ['26'], given: true},{question: 'Mass number:   ', answer: ['55.85'], given: false},{question: 'Valence:       ', answer: ['2+','2','+2','3+','3','+3'], given: false}],
+    [{question: 'Name:          ', answer: ['Cobalt','cobalt'], given: true},{question: 'Symbol:        ', answer: ['Co'], given: true},{question: 'Atomic Number: ', answer: ['27'], given: true},{question: 'Mass number:   ', answer: ['58.93'], given: false},{question: 'Valence:       ', answer: ['2+','2','+2','3+','3','+3'], given: false}],
+    [{question: 'Name:          ', answer: ['Nickel','nickel'], given: true},{question: 'Symbol:        ', answer: ['Ni'], given: true},{question: 'Atomic Number: ', answer: ['28'], given: true},{question: 'Mass number:   ', answer: ['58.69'], given: false},{question: 'Valence:       ', answer: ['2+','2','+2'], given: false}],
+    [{question: 'Name:          ', answer: ['Copper','copper'], given: true},{question: 'Symbol:        ', answer: ['Cu'], given: true},{question: 'Atomic Number: ', answer: ['29'], given: true},{question: 'Mass number:   ', answer: ['63.55'], given: false},{question: 'Valence:       ', answer: ['2+','2','+2','1+','1','+1','+'], given: false}],
+    [{question: 'Name:          ', answer: ['Zinc','zinc'], given: true},{question: 'Symbol:        ', answer: ['Zn'], given: true},{question: 'Atomic Number: ', answer: ['30'], given: true},{question: 'Mass number:   ', answer: ['65.38'], given: false},{question: 'Valence:       ', answer: ['2+','2','+2'], given: false}],
+    
 ];
 
 const polyatomicIons = [
