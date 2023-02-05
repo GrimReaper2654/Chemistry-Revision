@@ -50,6 +50,13 @@ var questions = [];
 questions = questions.concat(ptable);
 questions = questions.concat(polyatomicIons);
 
+var disabled = {
+    name: false,
+    symbol: false,
+    atomic: false,
+    mass: false,
+    valency: false,
+};
 var first = true;
 var brainSize = 1;
 var winStreak = 0;
@@ -84,6 +91,40 @@ function replacebrain(text) {
 function replaceControlPannel(text) {
     document.getElementById("controlPannel").innerHTML = text;
 };
+
+function isEnabled(question) {
+    switch (question) {
+        case 'Name:          ':
+            if (disabled.name) {
+                return false;
+            }
+            return true;
+        case 'Formula:       ':
+        case 'Symbol:        ':
+            if (disabled.symbol) {
+                return false;
+            }
+            return true;
+        case 'Atomic Number: ':
+            if (disabled.atomic) {
+                return false;
+            }
+            return true;
+        case 'Mass number:   ':
+        case 'Molar mass:    ':
+            if (disabled.mass) {
+                return false;
+            }
+            return true;
+        case 'Valence:       ':
+            if (disabled.valency) {
+                return false;
+            }
+            return true;
+        default:
+            return true;
+    }
+}
 
 async function bruh() {
     text = document.getElementById("all").innerHTML;
@@ -158,19 +199,22 @@ function generateQuestion() { // return html for a question and the answer
     replacemain(question);
     return [ans,given];*/
     var q = getRandomInt(0,questions.length);
-    var possibleGiven = 0;
+    var possibleGiven = [];
     for (var i = 0; i < questions[q].length; i += 1) {
-        if (questions[q][i].given) {
-            possibleGiven += 1;
+        if (questions[q][i].given && isEnabled(questions[q][i].question)) {
+            possibleGiven.push(questions[q][i]);
         }
     }
-    var given = getRandomInt(0,possibleGiven);
+    var given = getRandomInt(0,possibleGiven.length);
+    given = possibleGiven[given];
     var innerhtml = `<form>`;
     for (var i = 0; i < questions[q].length; i += 1) {
-        if (i == given) {
-            innerhtml += `<label>${questions[q][i].question}${questions[q][i].answer[0]}</label><br>`;
-        } else {
-            innerhtml += `<label>${questions[q][i].question}</label><input type="text" id="Q${i}"></input><br>`;
+        if (isEnabled(questions[q][i].question)) {
+            if (questions[q][i] == given) {
+                innerhtml += `<label>${questions[q][i].question}${questions[q][i].answer[0]}</label><br>`;
+            } else {
+                innerhtml += `<label>${questions[q][i].question}</label><input type="text" id="Q${i}"></input><br>`;
+            }
         }
     }
     innerhtml += `</form>`;
@@ -271,15 +315,27 @@ function check() {
     }
 }
 
+function disable(thing) {
+    if (disabled[thing]) {
+        disabled[thing] = false;
+    } else {
+        disabled[thing] = true;
+    }
+    if ((thing == 'name' || thing == 'symbol') && disabled.name && disabled.symbol) {
+        disabled.name = false;  // Big brain moment
+        disabled.symbol = false;
+        disabled.thing = true;
+    }
+    currentAnswer = generateQuestion();
+}
+
 function load() {
     console.log('Started the game');
     replacetitle(`<h1>Chemistry Revision</h1><h3>Fill in the blanks</h3>`);
     currentAnswer = generateQuestion();
     console.log(`Correct answer: `,questions[currentAnswer]);
-    replaceControlPannel(`<button onclick="check();"><h4>Submit</h4></button>`);
+    replaceControlPannel(`<button onclick="check();"><h4>Submit</h4></button><br><button onclick="disable('name');"><h4>toggle name</h4></button><button onclick="disable('symbol');"><h4>toggle symbol</h4></button><button onclick="disable('mass');"><h4>toggle mass number</h4></button><button onclick="disable('atomic');"><h4>toggle atomic number</h4></button><button onclick="disable('valency');"><h4>toggle valency</h4></button>`);
 };
-
-
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
