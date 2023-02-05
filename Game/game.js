@@ -5,6 +5,7 @@
 //----------------------------------------------------------------------
 //
 // Data comes from the Lucarelli textbook
+/*
 const ptable = [
     {name: ['Hydrogen','hydrogen'], symbol: ['H'], atomic: ['1'], mass: ['1.008','IDK'], valence: ['1+','1','+1','+','IDK']},
     {name: ['Helium','helium'], symbol: ['He'], atomic: ['2'], mass: ['4.003','IDK'], valence: ['0','IDK']},
@@ -37,6 +38,22 @@ const ptable = [
     {name: ['Copper','copper'], symbol: ['Cu'], atomic: ['29'], mass: ['63.55','IDK'], valence: ['2+','2','+2','1','1+','+1','+','IDK']},
     {name: ['Zinc','zinc'], symbol: ['Zn'], atomic: ['30'], mass: ['65.38','IDK'], valence: ['2+','2','+2','IDK']},
 ];
+*/
+const ptable = [
+    [{question: 'Name:          ', answer: ['Hydrogen','hydrogen'], given: true},{question: 'Symbol:        ', answer: ['H'], given: true},{question: 'Atomic Number: ', answer: ['1'], given: true},{question: 'Mass number:   ', answer: ['1.008'], given: false},{question: 'Valence:       ', answer: ['1+','1','+1','+'], given: false}],
+    [{question: 'Name:          ', answer: ['Helium','helium'], given: true},{question: 'Symbol:        ', answer: ['He'], given: true},{question: 'Atomic Number: ', answer: ['2'], given: true},{question: 'Mass number:   ', answer: ['4.003'], given: false},{question: 'Valence:       ', answer: ['0'], given: false}],
+    [{question: 'Name:          ', answer: ['Lithium','lithium'], given: true},{question: 'Symbol:        ', answer: ['Li'], given: true},{question: 'Atomic Number: ', answer: ['3'], given: true},{question: 'Mass number:   ', answer: ['6.968'], given: false},{question: 'Valence:       ', answer: ['1+','1','+1','+'], given: false}],
+];
+
+const polyatomicIons = [
+    [{question: 'Name:          ', answer: ['Sulfate','sulfate'], given: true},{question: 'Formula:       ', answer: ['SO4'], given: true},{question: 'Molar mass:    ', answer: ['87.07'], given: false},{question: 'Valence:       ', answer: ['2-','2','-2'], given: false}],
+    [{question: 'Name:          ', answer: ['Sulfite','sulfite'], given: true},{question: 'Formula:       ', answer: ['SO3'], given: true},{question: 'Molar mass:    ', answer: ['71.07'], given: false},{question: 'Valence:       ', answer: ['2-','2','-2'], given: false}],
+    [{question: 'Name:          ', answer: ['Sulfide','sulfide'], given: true},{question: 'Formula:       ', answer: ['S'], given: true},{question: 'Molar mass:    ', answer: ['23.07'], given: false},{question: 'Valence:       ', answer: ['2-','2','-2'], given: false}],
+];
+
+var questions = [];
+questions = questions.concat(ptable);
+questions = questions.concat(polyatomicIons);
 
 var first = true;
 var brainSize = 1;
@@ -65,6 +82,7 @@ function replacemain(text) {
 function replacebrain(text) {
     var c = document.getElementById("bruh");
     var ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, 400, 300);
     ctx.drawImage(text, 0, 0);
 };
 
@@ -115,6 +133,7 @@ function drawBrain() {
 }
 
 function generateQuestion() { // return html for a question and the answer
+    /*
     // Did you know that large amounts of blood loss causes you to make more mistakes when coding? I found that out the hard way...
     var given = getRandomInt(1,5);
     var ans = getRandomInt(0,ptable.length);
@@ -142,12 +161,31 @@ function generateQuestion() { // return html for a question and the answer
     question += `<label>Valence:       </label><input type="text" id="valence"></input></form>`;
     console.log(question);
     replacemain(question);
-    return [ans,given];
+    return [ans,given];*/
+    var q = getRandomInt(0,questions.length);
+    var possibleGiven = 0;
+    for (var i = 0; i < questions[q].length; i += 1) {
+        if (questions[q][i].given) {
+            possibleGiven += 1;
+        }
+    }
+    var given = getRandomInt(0,possibleGiven);
+    var innerhtml = `<form>`;
+    for (var i = 0; i < questions[q].length; i += 1) {
+        if (i == given) {
+            innerhtml += `<label>${questions[q][i].question}${questions[q][i].answer[0]}</label><br>`;
+        } else {
+            innerhtml += `<label>${questions[q][i].question}</label><input type="text" id="Q${i}"></input><br>`;
+        }
+    }
+    innerhtml += `</form>`;
+    replacemain(innerhtml);
+    return q;
 };
 
 function check() {
-    // control+c control+v...
     var correct = true;
+    /*
     if (currentAnswer[1] != 1) {
         var match = false;
         for (var i = 0; i < ptable[currentAnswer[0]].name.length; i +=1 ) {
@@ -203,6 +241,21 @@ function check() {
         if (match == false) {
             correct = false;
         }
+    }*/
+    var ans = questions[currentAnswer];
+    for (var i = 0; i < ans.length; i += 1) {
+        if (document.getElementById(`Q${i}`)) {
+            var match = false;
+            for (var j = 0; j < ans[i].answer.length; j +=1 ) {
+                if (document.getElementById(`Q${i}`).value == ans[i].answer[j]) {
+                    match = true;
+                    break;
+                }
+            }
+            if (match == false) {
+                correct = false;
+            }
+        }
     }
     if (correct) {
         first = false;
@@ -227,6 +280,7 @@ function load() {
     console.log('Started the game');
     replacetitle(`<h1>Chemistry Revision</h1><h3>Fill in the blanks</h3>`);
     currentAnswer = generateQuestion();
+    console.log(`Correct answer: `,questions[currentAnswer]);
     replaceControlPannel(`<button onclick="check();"><h4>Submit</h4></button>`);
 };
 
@@ -243,6 +297,7 @@ async function main() {
         if (document.getElementById("main")) { // the page does exist
             if(reloadQuestion) {
                 currentAnswer = generateQuestion();
+                console.log(`Correct answer: `,questions[currentAnswer]);
                 reloadQuestion = false;
             }
             drawBrain();
