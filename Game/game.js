@@ -44,7 +44,15 @@ const polyatomicIons = [
     [{question: 'Name:          ', answer: ['Sulfate','sulfate'], given: true},{question: 'Formula:       ', answer: ['SO4'], given: true},{question: 'Molar mass:    ', answer: ['87.07'], given: false},{question: 'Valence:       ', answer: ['2-','2','-2'], given: false}],
     [{question: 'Name:          ', answer: ['Sulfite','sulfite'], given: true},{question: 'Formula:       ', answer: ['SO3'], given: true},{question: 'Molar mass:    ', answer: ['71.07'], given: false},{question: 'Valence:       ', answer: ['2-','2','-2'], given: false}],
     [{question: 'Name:          ', answer: ['Sulfide','sulfide'], given: true},{question: 'Formula:       ', answer: ['S'], given: true},{question: 'Molar mass:    ', answer: ['23.07'], given: false},{question: 'Valence:       ', answer: ['2-','2','-2'], given: false}],
+    [{question: 'Name:          ', answer: ['Ammonium','ammonium'], given: true},{question: 'Formula:       ', answer: ['NH4'], given: true},{question: 'Molar mass:    ', answer: ['18.042'], given: false},{question: 'Valence:       ', answer: ['1+','1','+1','+'], given: false}],
+    [{question: 'Name:          ', answer: ['Hydroxide','hydroxide'], given: true},{question: 'Formula:       ', answer: ['OH'], given: true},{question: 'Molar mass:    ', answer: ['17.008'], given: false},{question: 'Valence:       ', answer: ['1-','1','-1','-'], given: false}],
+    [{question: 'Name:          ', answer: ['Cyanide','cyanide'], given: true},{question: 'Formula:       ', answer: ['CN'], given: true},{question: 'Molar mass:    ', answer: ['26.02'], given: false},{question: 'Valence:       ', answer: ['1-','1','-1','-'], given: false}],
+    [{question: 'Name:          ', answer: ['Carbonate','carbonate'], given: true},{question: 'Formula:       ', answer: ['CO3'], given: true},{question: 'Molar mass:    ', answer: ['60.01'], given: false},{question: 'Valence:       ', answer: ['2-','2','-2'], given: false}],
+    [{question: 'Name:          ', answer: ['Oxalate','oxalate'], given: true},{question: 'Formula:       ', answer: ['C2O4'], given: true},{question: 'Molar mass:    ', answer: ['88.02'], given: false},{question: 'Valence:       ', answer: ['2-','2','-2'], given: false}],
+    [{question: 'Name:          ', answer: ['Nitrate','nitrate'], given: true},{question: 'Formula:       ', answer: ['NO3'], given: true},{question: 'Molar mass:    ', answer: ['60.01'], given: false},{question: 'Valence:       ', answer: ['1-','1','-1','-'], given: false}],
+    [{question: 'Name:          ', answer: ['Nitrite','nitrite'], given: true},{question: 'Formula:       ', answer: ['NO2'], given: true},{question: 'Molar mass:    ', answer: ['44.01'], given: false},{question: 'Valence:       ', answer: ['1-','1','-1','-'], given: false}],
 ];
+
 
 var questions = [];
 questions = questions.concat(ptable);
