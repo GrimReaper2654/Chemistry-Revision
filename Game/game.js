@@ -349,6 +349,7 @@ function disable(thing) {
         disabled.thing = true;
     }
     currentAnswer = generateQuestion();
+    console.log(`Correct answer: `,questions[currentAnswer]);
 }
 
 function load() {
