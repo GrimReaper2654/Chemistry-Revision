@@ -84,6 +84,7 @@ var brainSize = 1;
 var winStreak = 0;
 var currentAnswer = null;
 var reloadQuestion = false;
+var hintUsed = false;
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -246,63 +247,6 @@ function generateQuestion() { // return html for a question and the answer
 
 function check() {
     var correct = true;
-    /*
-    if (currentAnswer[1] != 1) {
-        var match = false;
-        for (var i = 0; i < ptable[currentAnswer[0]].name.length; i +=1 ) {
-            console.log(ptable[currentAnswer[0]].name[i],document.getElementById("name").innerHTML)
-            if (document.getElementById("name").value == ptable[currentAnswer[0]].name[i]) {
-                match = true;
-            }
-        }
-        if (match == false) {
-            correct = false;
-        }
-    }
-    if (currentAnswer[1] != 2) {
-        var match = false;
-        for (var i = 0; i < ptable[currentAnswer[0]].symbol.length; i +=1 ) {
-            if (document.getElementById("symbol").value == ptable[currentAnswer[0]].symbol[i]) {
-                match = true;
-            }
-        }
-        if (match == false) {
-            correct = false;
-        }
-    }
-    if (currentAnswer[1] != 3) {
-        var match = false;
-        for (var i = 0; i < ptable[currentAnswer[0]].atomic.length; i +=1 ) {
-            if (document.getElementById("atomic").value == ptable[currentAnswer[0]].atomic[i]) {
-                match = true;
-            }
-        }
-        if (match == false) {
-            correct = false;
-        }
-    }
-    if (currentAnswer[1] != 4) {
-        var match = false;
-        for (var i = 0; i < ptable[currentAnswer[0]].mass.length; i +=1 ) {
-            if (document.getElementById("mass").value == ptable[currentAnswer[0]].mass[i]) {
-                match = true;
-            }
-        }
-        if (match == false) {
-            correct = false;
-        }
-    }
-    if (currentAnswer[1] != 5) { // always true
-        var match = false;
-        for (var i = 0; i < ptable[currentAnswer[0]].valence.length; i +=1 ) {
-            if (document.getElementById("valence").value == ptable[currentAnswer[0]].valence[i]) {
-                match = true;
-            }
-        }
-        if (match == false) {
-            correct = false;
-        }
-    }*/
     var ans = questions[currentAnswer];
     for (var i = 0; i < ans.length; i += 1) {
         if (document.getElementById(`Q${i}`)) {
@@ -321,9 +265,13 @@ function check() {
     if (correct) {
         first = false;
         reloadQuestion = true;
-        brainSize += Math.round(winStreak/3)*5+10;
-        winStreak += 1;
-        replacedescription(`Correct! ${winStreak} correct in a row.`);
+        if (hintUsed) {
+            hintUsed = false;
+        } else {
+            brainSize += Math.round(winStreak/3)*5+10;
+            winStreak += 1;
+            replacedescription(`Correct! ${winStreak} correct in a row.`);
+        }
     } else {
         if (first) {
             brainSize -= 20;
@@ -335,6 +283,20 @@ function check() {
         replacedescription(`You fool, you moron, how could you get it wrong! You stoopid! L+Bozo`);
         bruh();
     }
+}
+
+function hint() {
+    var ans = questions[currentAnswer];
+    for (var i = 0; i < ans.length; i += 1) {
+        if (document.getElementById(`Q${i}`)) {
+            document.getElementById(`Q${i}`).value = ans[i].answer[0]
+        }
+    }
+    brainSize -= 10;
+    first = false;
+    winStreak = 0;
+    hintUsed = true;
+    replacedescription(`Memorise this very carefully. Or else...`);
 }
 
 function disable(thing) {
@@ -357,7 +319,8 @@ function load() {
     replacetitle(`<h1>Chemistry Revision</h1><h3>Fill in the blanks</h3>`);
     currentAnswer = generateQuestion();
     console.log(`Correct answer: `,questions[currentAnswer]);
-    replaceControlPannel(`<button onclick="check();"><h4>Submit</h4></button><br><button onclick="disable('name');"><h4>toggle name</h4></button><button onclick="disable('symbol');"><h4>toggle symbol</h4></button><button onclick="disable('mass');"><h4>toggle mass number</h4></button><button onclick="disable('atomic');"><h4>toggle atomic number</h4></button><button onclick="disable('valency');"><h4>toggle valency</h4></button>`);
+    replacedescription(`It's time to study chemistry!`);
+    replaceControlPannel(`<button onclick="check();"><h4>Submit</h4></button><button onclick="hint();"><h4>Hint</h4></button><br><button onclick="disable('name');"><h4>toggle name</h4></button><button onclick="disable('symbol');"><h4>toggle symbol</h4></button><button onclick="disable('mass');"><h4>toggle mass number</h4></button><button onclick="disable('atomic');"><h4>toggle atomic number</h4></button><button onclick="disable('valency');"><h4>toggle valency</h4></button>`);
 };
 
 function sleep(ms) {
