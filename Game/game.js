@@ -37,7 +37,6 @@ const ptable = [
     [{question: 'Name:          ', answer: ['Nickel','nickel'], given: true},{question: 'Symbol:        ', answer: ['Ni'], given: true},{question: 'Atomic Number: ', answer: ['28'], given: true},{question: 'Mass number:   ', answer: ['58.69'], given: false},{question: 'Valence:       ', answer: ['2+','2','+2'], given: false}],
     [{question: 'Name:          ', answer: ['Copper','copper'], given: true},{question: 'Symbol:        ', answer: ['Cu'], given: true},{question: 'Atomic Number: ', answer: ['29'], given: true},{question: 'Mass number:   ', answer: ['63.55'], given: false},{question: 'Valence:       ', answer: ['2+','2','+2','1+','1','+1','+'], given: false}],
     [{question: 'Name:          ', answer: ['Zinc','zinc'], given: true},{question: 'Symbol:        ', answer: ['Zn'], given: true},{question: 'Atomic Number: ', answer: ['30'], given: true},{question: 'Mass number:   ', answer: ['65.38'], given: false},{question: 'Valence:       ', answer: ['2+','2','+2'], given: false}],
-    
 ];
 
 const polyatomicIons = [
@@ -69,8 +68,6 @@ const polyatomicIons = [
 ];
 
 var questions = [];
-questions = questions.concat(ptable);
-questions = questions.concat(polyatomicIons);
 
 var disabled = {
     name: false,
@@ -250,6 +247,7 @@ function check() {
     var ans = questions[currentAnswer];
     for (var i = 0; i < ans.length; i += 1) {
         if (document.getElementById(`Q${i}`)) {
+            if (document.getElementById(`Q${i}`).value == 'idk') continue;
             var match = false;
             for (var j = 0; j < ans[i].answer.length; j +=1 ) {
                 if (document.getElementById(`Q${i}`).value == ans[i].answer[j]) {
@@ -292,7 +290,7 @@ function hint() {
             document.getElementById(`Q${i}`).value = ans[i].answer[0]
         }
     }
-    brainSize -= 10;
+    brainSize -= 5;
     first = false;
     winStreak = 0;
     hintUsed = true;
@@ -327,7 +325,13 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 };
 
-async function main() {
+async function main(elements, ions) {
+    for (let i = 0; i < elements; i++) {
+        questions.push(ptable[i]);
+    }
+    for (let i = 0; i < ions; i++) {
+        questions.push(polyatomicIons[i]);
+    }
     load();
     while (1) {
         await sleep(1000/60);

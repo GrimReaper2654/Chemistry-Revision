@@ -13,11 +13,19 @@
             <h1>Chemistry Revision</h1>
         </div>
         <div id="main">
-            
-            
+            <p>A tool to help with memorising the first 30 elements of the periodic table as well as some common polyatomic ions.</p>
+            <p>Whether certain proterties are assessed can be toggled. Useful when you don't want to have to memorise the molar mass of everything for example.</p>
+            <p>answer 'idk' if you feel like a property is too irrelavent but can't be bothered disabling it. (Can be abused to get high scores)</p>
+            <p>Beware of jump scares when questions are repeatedly answered incorrectly.</p>
+            <p>Different sets of flash cards are avalaible. Select below.</p>
+            <p>Note: I made this several years ago, pls don't judge terribly written code. If bugs exist or features wanted, make an issue on the github repo.</p>
         </div>
         <div id="controlPannel">
-            <button onclick="main();"><h4>Start</h4></button>
+            <button onclick="main(30, 25);"><h4>All Elements and Ions</h4></button>
+            <button onclick="main(20, 0);"><h4>First 20 Elements</h4></button>
+            <button onclick="main(30, 0);"><h4>First 30 Elements</h4></button>
+            <button onclick="main(0, 25);"><h4>Polyatomic Ions Only</h4></button>
+            <button onclick="main(20, 25);"><h4>First 20 + Polyatomic Ions</h4></button>
         </div>
         <div id="description">
             
